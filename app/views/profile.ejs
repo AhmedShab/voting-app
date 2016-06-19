@@ -1,0 +1,36 @@
+<% include header %>
+<% include nav %>
+<% include message %>
+
+<div class="container">
+  <div class="jumbotron center">
+    <h1>Dashboard</h1>
+  </div>
+  <div class="row">
+    <div class="btn-group col-md-6 col-md-offset-5" role="group">
+      <button type="button" class="btn btn-primary">New Poll</button>
+      <button type="button" class="btn btn-default secondary">My Polls</button>
+    </div>
+    <div class="row">
+      <form class="col-md-5 col-md-offset-3" ng-controller="newPollController">
+        <div class="form-group">
+          <h2>New Poll</h2>
+          <label for="poll">Name your poll</label>
+          <input type="text" class="form-control" placeholder="" ng-model="pollName">
+        </div>
+        <div class="form-group">
+          <label for="options">Options</label>
+          <input type="text" class="form-control space" placeholder="" ng-model="optionOne">
+          <input type="text" class="form-control space" placeholder="" ng-model="optionTwo">
+          <div class="space" ng-repeat="option in options">
+          <input type="{{option.text}}" class="{{option.class}}" placeholder="{{option.placeholder}}" ng-model="option.choice">
+        </div>
+        </div>
+        <button type="submit" class="btn btn-primary" ng-click="saveMyPolls()">Submit</button>
+        <button type="submit" class="btn btn-default secondary" ng-click="addOption()">Add more options</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<% include footer %>
