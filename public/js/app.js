@@ -1,6 +1,6 @@
 var app = angular.module('votingApp', []);
 
-app.controller('newPollController', ['$scope', '$http', '$window', function ($scope, $http, $window) {
+app.controller('newPollController', ['$scope', '$http', '$window', '$location', function ($scope, $http, $window, $location) {
 
   $scope.options = [];
 
@@ -34,14 +34,43 @@ app.controller('newPollController', ['$scope', '$http', '$window', function ($sc
     } )
       .then(
         function (respond) {
-          console.log(respond.data);
     },
         function (respond) {
 
     });
 
-    // console.log(choices);
+    console.log($location);
+    $window.location.href = 'polls/my-polls';
 
   };
+
+  $scope.myPolls = function () {
+    console.log("My polls");
+
+
+  };
+
+
+}]);
+
+app.controller('getPollsController', ['$scope', '$http', '$window', function ($scope, $http, $window) {
+  $scope.polls;
+  $http.get('/profile/created-polls', {
+  } )
+    .then(
+      function (respond) {
+        // console.log(respond.data);
+        $scope.polls = respond.data;
+        console.log($scope.polls);
+  },
+      function (respond) {
+  });
+
+  console.log($scope.polls);
+
+}]);
+
+app.controller('pollsController', ['$scope', '$http', '$window', function ($scope, $http, $window) {
+  $scope.url =["/profile", "polls/my-polls"];
 
 }]);

@@ -41,10 +41,15 @@ module.exports = function (app, passport) {
     successFlash: true
   }));
 
-  router.post('/login', passport.authenticate('local-login', {
+  router.post('/login', saveUser, passport.authenticate('local-login', {
     successRedirect : '/profile', // redirect to the secure profile section
     failureRedirect : '/login', // redirect back to the signup page if there is an error
     failureFlash : true, // allow flash messages
     successFlash: true
   }));
+
+  function saveUser(req, res, next) {
+    req.session.email = "ahmed@gmail.com"; // get the email from the user
+    next();
+  }
 };

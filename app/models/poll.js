@@ -6,9 +6,7 @@ var mongoose = require('mongoose'),
 var pollSchema = new Schema({
   pollName: String,
   options: [String],
-  createdBy: {
-    type: String, ref: 'User'
-  }
+  createdBy : { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
 

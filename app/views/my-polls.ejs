@@ -3,12 +3,13 @@
 
 <div class="container">
   <div class="jumbotron center">
-    <h1>Polls</h1>
+    <h1>Dashboard</h1>
   </div>
   <div class="row">
-    <div ng-controller="getPollsController">
-      <div class=" col-md-6 col-md-offset-3 well center" ng-repeat="poll in polls">
-        {{ poll.pollName }}
+    <% include pollLinks %>
+    <div class="row">
+      <div class="col-md-5 col-md-offset-3">
+
       </div>
     </div>
   </div>

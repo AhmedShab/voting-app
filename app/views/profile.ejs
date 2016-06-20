@@ -6,13 +6,10 @@
   <div class="jumbotron center">
     <h1>Dashboard</h1>
   </div>
-  <div class="row">
-    <div class="btn-group col-md-6 col-md-offset-5" role="group">
-      <button type="button" class="btn btn-primary">New Poll</button>
-      <button type="button" class="btn btn-default secondary">My Polls</button>
-    </div>
+  <div class="row" ng-controller="newPollController">
+    <% include pollLinks %>
     <div class="row">
-      <form class="col-md-5 col-md-offset-3" ng-controller="newPollController">
+      <form class="col-md-5 col-md-offset-3">
         <div class="form-group">
           <h2>New Poll</h2>
           <label for="poll">Name your poll</label>
